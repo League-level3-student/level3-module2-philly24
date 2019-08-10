@@ -24,13 +24,32 @@ class _01_SwappingDigits {
 	
 	//1. Complete the method so that the first two elements of the array are swapped
 	public static void swapArrayOfTwo(int[] arr) {
-		
+		int placeHolder = arr[0];
+		arr[0] = arr[1];
+		arr[1] = placeHolder;
 	}
 	
 	//2. Complete the method so that it sorts the array using a bubble sort.
 	//   Iterate through the array and when you find two elements that are out
 	//   of order, swap them. Repeat this until the array is in order.
 	public static void sortIntArray(int[] arr) {
+		boolean finish = false;
+		int swaping = 0;
+		while(finish == false) {
+			int lastIndex = 0;
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[lastIndex] >arr[i]) {
+					int placeHolder = arr[lastIndex];
+					arr[i] = placeHolder;
+					swaping++;
+							
+				}
+			}
+			if(swaping == 0) {
+				finish = true;
+				break;
+		}
+		}
 		
 	}
 	
@@ -38,6 +57,27 @@ class _01_SwappingDigits {
 	//   *Hint* it helps to sort it first.
 	//   *Double Hint* Use the method you already wrote in step 2 to sort it
 	public static int findMiddle(int[] arr) {
-		return 0;
+		boolean finish = false;
+		int swaping = 0;
+		while(finish == false) {
+			int lastIndex = 0;
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[lastIndex] > arr[i]) {
+					int placeHolder = arr[lastIndex];
+					arr[lastIndex] = arr[i];
+					arr[i] = arr[placeHolder];
+					swaping++;
+				}
+			}
+		if (swaping == 0) {
+			finish = true;
+			break;
+		}
+		}
+		if (arr.length % 2 == 0) {
+			return (arr[arr.length/2]+arr[(arr.length/2)-1])/2; 
+		}else {
+			return arr[(int) arr.length/2];
+		}
 	}
 }
